@@ -9,6 +9,14 @@ public class LoginStepDefinitions {
     private LoginPage loginPage;
     private final ExcelReader excelReader = new ExcelReader();
 
+    @Given("^I log in with credentials provided$")
+    public void i_login_with_credentials() {
+        i_enter_stored_username();
+        i_click_next_button();
+        i_enter_stored_password();
+        i_click_authenticate_login();
+    }
+
     @Given("^I enter stored username$")
     public void i_enter_stored_username() {
         excelReader.callDefaults();
