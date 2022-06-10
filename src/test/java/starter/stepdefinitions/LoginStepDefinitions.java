@@ -1,15 +1,18 @@
 package starter.stepdefinitions;
 
 import io.cucumber.java.en.Given;
+import starter.navigation.ExcelReader;
 import starter.navigation.LoginPage;
 
 public class LoginStepDefinitions {
 
     private LoginPage loginPage;
+    private final ExcelReader excelReader = new ExcelReader();
 
     @Given("^I enter stored username$")
     public void i_enter_stored_username() {
-        loginPage.enterStoredUsername();
+        excelReader.callDefaults();
+        loginPage.enterUsernameOf(excelReader.getUsername());
     }
 
     @Given("^I enter username of '(.*)'$")
@@ -19,7 +22,7 @@ public class LoginStepDefinitions {
 
     @Given("^I enter stored password$")
     public void i_enter_stored_password() {
-        loginPage.enterStoredPassword();
+        loginPage.enterPasswordOf(excelReader.getPassword());
     }
 
     @Given("^I enter password of '(.*)'$")
